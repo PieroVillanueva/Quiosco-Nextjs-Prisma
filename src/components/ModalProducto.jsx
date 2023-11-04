@@ -61,10 +61,8 @@ const ModalProducto = () => {
               <button
                 type="button"
                 onClick={() => {
-                  setCantidad((prevState) => {
-                    if (prevState === 1) return 1;
-                    return prevState - 1;
-                  });
+                  if (cantidad <= 1) return;
+                  setCantidad(cantidad - 1);
                 }}
               >
                 <svg
@@ -86,10 +84,8 @@ const ModalProducto = () => {
               <button
                 type="button"
                 onClick={() => {
-                  setCantidad((prevState) => {
-                    if (prevState === 5) return 5;
-                    setCantidad(prevState + 1);
-                  });
+                  if (cantidad >= 5) return;
+                  setCantidad(cantidad + 1);
                 }}
               >
                 <svg
