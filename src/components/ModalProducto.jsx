@@ -12,13 +12,13 @@ const ModalProducto = () => {
 
   useEffect(() => {
     if (pedido.some((productoState) => productoState.id === producto.id)) {
-      setEdicion(true);
       const productoEdicion = pedido.find(
         (productoState) => productoState.id === producto.id
       );
+      setEdicion(true);
       setCantidad(productoEdicion.cantidad);
     }
-  }, []);
+  }, [producto, pedido]);
 
   return (
     <>
