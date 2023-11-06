@@ -1,6 +1,6 @@
 import Image from "next/image";
 import useQuiosco from "@/hooks/useQuiosco";
-import Link from "next/link";
+// import Link from "next/link";
 
 const Categoria = ({ icono, nombre, id }) => {
   const { categoriaActual, handleClickCategoria } = useQuiosco();
@@ -8,7 +8,8 @@ const Categoria = ({ icono, nombre, id }) => {
     <div
       className={`${
         categoriaActual?.id === id && "bg-amber-400"
-      } flex items-center gap-4 w-full border p-5 hover:bg-amber-400`}
+      } flex items-center gap-4 w-full border p-5 hover:bg-amber-400 hover:cursor-pointer`}
+      onClick={() => handleClickCategoria(id)}
     >
       <Image
         src={`/img/icono_${icono}.svg`}
@@ -16,13 +17,7 @@ const Categoria = ({ icono, nombre, id }) => {
         height={70}
         alt={`Imagen de ${nombre}`}
       />
-      <Link
-        href={"/"}
-        className="text-2xl font-bold hover:cursor-pointer"
-        onClick={() => handleClickCategoria(id)}
-      >
-        {nombre}
-      </Link>
+      <p className="text-2xl font-bold ">{nombre}</p>
     </div>
   );
 };

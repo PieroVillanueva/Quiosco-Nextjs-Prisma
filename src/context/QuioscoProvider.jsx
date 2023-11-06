@@ -46,6 +46,7 @@ export const QuioscoProvider = ({ children }) => {
   const handleClickCategoria = (id) => {
     const categoria = categorias.filter((cat) => cat.id === id);
     setCategoriaActual(categoria[0]);
+    router.push("/");
   };
   const handleSetProducto = (producto) => {
     setProducto(producto);
