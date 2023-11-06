@@ -4,11 +4,13 @@ import { useState, createContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import ModalProducto from "@/components/ModalProducto";
 import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const QuioscoContext = createContext();
 
 export const QuioscoProvider = ({ children }) => {
   const router = useRouter();
+  const path = usePathname();
 
   const [categorias, setCategorias] = useState([]);
   const [categoriaActual, setCategoriaActual] = useState({});
@@ -46,7 +48,9 @@ export const QuioscoProvider = ({ children }) => {
   const handleClickCategoria = (id) => {
     const categoria = categorias.filter((cat) => cat.id === id);
     setCategoriaActual(categoria[0]);
-    router.push("/");
+    if (path !== "/") {
+      router.push("/");
+    }
   };
   const handleSetProducto = (producto) => {
     setProducto(producto);
