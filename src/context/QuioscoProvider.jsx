@@ -25,7 +25,8 @@ export const QuioscoProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    handleClickCategoria(1);
+    const categoria = categorias.filter((cat) => cat.id === 1);
+    setCategoriaActual(categoria[0]);
   }, [categorias]);
 
   useEffect(() => {
@@ -48,9 +49,7 @@ export const QuioscoProvider = ({ children }) => {
   const handleClickCategoria = (id) => {
     const categoria = categorias.filter((cat) => cat.id === id);
     setCategoriaActual(categoria[0]);
-    if (path !== "/") {
-      router.push("/");
-    }
+    router.push("/");
   };
   const handleSetProducto = (producto) => {
     setProducto(producto);
